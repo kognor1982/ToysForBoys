@@ -1,0 +1,43 @@
+﻿[landen]
+.ID		int not null auto-increment primary key
+.naam		nvarchar(50) null
+
+[klanten]
+.ID		int not null auto-increment primary key
+.naam		nvarchar(50) null
+.straat		nvarchar(50) null
+.postcode	nvarchar(10) null
+.gemeente	nvarchar(50) null
+.provincie	nvarchar(50) null
+.landID		int null
+.userlevel	int null default 1
+
+[productcategories]
+.ID		int not null auto-increment primary key
+.naam		nvarchar(50) null
+.omschrijving	ntext null
+
+[producten]
+.ID		int not null auto-increment primary key
+.naam		nvarchar(50) null
+.schaal		nvarchar(10) null
+.omschrijving	ntext null
+.opVoorraad	int null default 0
+.besteld	int null default 0
+.prijs		numeric(10,2) null
+.productID	int null default 0
+
+[bestellingen]
+.ID		int not null auto-increment primary key
+.bestelDatum	date/time null
+.leverDatum	date/time null
+.verzendDatum	date/time null
+.opmerkingen	ntext null
+.klantID	int null default 0
+.status		nvarchar(10)
+
+[besteldetails]
+.bestellingID	int not null -> foreign key [bestellingen].[ID]
+.productID	int not null -> foreign key [producten].[ID]
+.aantal		int null default 0
+.bestelprijs	numeric(10,2) null default 0
