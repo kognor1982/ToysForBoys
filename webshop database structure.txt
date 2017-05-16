@@ -25,7 +25,7 @@
 .opVoorraad	int null default 0
 .besteld	int null default 0
 .prijs		numeric(10,2) null
-.productID	int null default 0
+.categorieID	int null default 0
 
 [bestellingen]
 .ID		int not null auto-increment primary key
