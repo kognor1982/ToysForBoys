@@ -23,6 +23,7 @@ namespace ToysForBoys.Models
         public int ID { get; set; }
         public string Naam { get; set; }
         public string Schaal { get; set; }
+
         public string Omschrijving { get; set; }
         public int OpVoorraad { get; set; }
         public int Besteld { get; set; }
