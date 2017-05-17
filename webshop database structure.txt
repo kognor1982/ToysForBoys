@@ -9,7 +9,7 @@
 .postcode	nvarchar(10) null
 .gemeente	nvarchar(50) null
 .provincie	nvarchar(50) null
-.landID		int null
+.landID		int null -> foreign key [landen].[ID]
 .userlevel	int null default 1
 
 [productcategories]
@@ -25,7 +25,7 @@
 .opVoorraad	int null default 0
 .besteld	int null default 0
 .prijs		numeric(10,2) null
-.productID	int null default 0
+.categorieID	int null default 0 -> foreign key [productcategories].[ID]
 
 [bestellingen]
 .ID		int not null auto-increment primary key
@@ -33,7 +33,7 @@
 .leverDatum	date/time null
 .verzendDatum	date/time null
 .opmerkingen	ntext null
-.klantID	int null default 0
+.klantID	int null default 0 -> foreign key [klanten].[ID]
 .status		nvarchar(10)
 
 [besteldetails]
