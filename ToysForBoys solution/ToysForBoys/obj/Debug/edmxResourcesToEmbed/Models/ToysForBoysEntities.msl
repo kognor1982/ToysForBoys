@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="webshopModelStoreContainer" CdmEntityContainer="webshopEntities">
+    <EntitySetMapping Name="BestelDetails">
+      <EntityTypeMapping TypeName="webshopModel.BestelDetail">
+        <MappingFragment StoreEntitySet="besteldetails">
+          <ScalarProperty Name="BestellingID" ColumnName="bestellingID" />
+          <ScalarProperty Name="ProductID" ColumnName="productID" />
+          <ScalarProperty Name="Aantal" ColumnName="aantal" />
+          <ScalarProperty Name="BestelPrijs" ColumnName="bestelPrijs" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bestellingen">
+      <EntityTypeMapping TypeName="webshopModel.Bestelling">
+        <MappingFragment StoreEntitySet="bestellingen">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BestelDatum" ColumnName="bestelDatum" />
+          <ScalarProperty Name="LeverDatum" ColumnName="leverDatum" />
+          <ScalarProperty Name="VerzendDatum" ColumnName="verzendDatum" />
+          <ScalarProperty Name="Opmerkingen" ColumnName="opmerkingen" />
+          <ScalarProperty Name="KlantID" ColumnName="klantID" />
+          <ScalarProperty Name="Status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Klanten">
+      <EntityTypeMapping TypeName="webshopModel.Klant">
+        <MappingFragment StoreEntitySet="klanten">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Naam" ColumnName="naam" />
+          <ScalarProperty Name="Straat" ColumnName="straat" />
+          <ScalarProperty Name="Postcode" ColumnName="postcode" />
+          <ScalarProperty Name="Gemeente" ColumnName="gemeente" />
+          <ScalarProperty Name="Provincie" ColumnName="provincie" />
+          <ScalarProperty Name="LandID" ColumnName="landID" />
+          <ScalarProperty Name="Userlevel" ColumnName="userlevel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Landen">
+      <EntityTypeMapping TypeName="webshopModel.Land">
+        <MappingFragment StoreEntitySet="landen">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Naam" ColumnName="naam" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductCategories">
+      <EntityTypeMapping TypeName="webshopModel.ProductCategorie">
+        <MappingFragment StoreEntitySet="productcategories">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Naam" ColumnName="naam" />
+          <ScalarProperty Name="Omschrijving" ColumnName="omschrijving" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Producten">
+      <EntityTypeMapping TypeName="webshopModel.Product">
+        <MappingFragment StoreEntitySet="producten">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Naam" ColumnName="naam" />
+          <ScalarProperty Name="Schaal" ColumnName="schaal" />
+          <ScalarProperty Name="Omschrijving" ColumnName="omschrijving" />
+          <ScalarProperty Name="OpVoorraad" ColumnName="opVoorraad" />
+          <ScalarProperty Name="Besteld" ColumnName="besteld" />
+          <ScalarProperty Name="Prijs" ColumnName="prijs" />
+          <ScalarProperty Name="CategorieID" ColumnName="categorieID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
