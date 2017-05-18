@@ -211,6 +211,7 @@
     <Compile Include="Models\Bestelling.cs">
       <DependentUpon>ToysForBoysEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BestellingUitbreiding.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Klant.cs">
       <DependentUpon>ToysForBoysEntities.tt</DependentUpon>
