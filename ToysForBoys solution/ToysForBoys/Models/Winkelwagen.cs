@@ -57,5 +57,17 @@ namespace ToysForBoys.Models
                 }
             }
         }
+
+        public void VerwijderBestelDetail(int productId)
+        {
+            foreach (var bestelDetail in this.Bestelling.BestelDetails)
+            {
+                if (bestelDetail.Product.ID == productId)
+                {
+                    this.Bestelling.BestelDetails.Remove(bestelDetail);
+                    break;
+                }
+            }
+        }
     }
 }
