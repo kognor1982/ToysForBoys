@@ -209,9 +209,11 @@
     <Compile Include="Models\BestelDetail.cs">
       <DependentUpon>ToysForBoysEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BesteldetailUitbreiding.cs" />
     <Compile Include="Models\Bestelling.cs">
       <DependentUpon>ToysForBoysEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BestellingUitbreiding.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Klant.cs">
       <DependentUpon>ToysForBoysEntities.tt</DependentUpon>
@@ -247,7 +249,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Winkelwagen.cs" />
+    <Compile Include="Models\Winkelwagen.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
