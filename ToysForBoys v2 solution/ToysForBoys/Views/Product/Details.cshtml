@@ -1,0 +1,75 @@
+﻿@model ToysForBoys.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    ViewBag.Voorraad = 0;
+}
+
+<h2>Product Details</h2>
+
+<div>
+    <h4>@Html.DisplayFor(model => model.Naam)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(model => model.Naam)</dt>
+        <dd>@Html.DisplayFor(model => model.Naam)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Schaal)</dt>
+        <dd>@Html.DisplayFor(model => model.Schaal)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Omschrijving)</dt>
+        <dd>@Html.DisplayFor(model => model.Omschrijving)</dd>
+        @if (User.IsInRole("Admin") == true)
+        {
+            <dt>@Html.DisplayNameFor(model => model.OpVoorraad)</dt>
+            <dd>@Html.DisplayFor(model => model.OpVoorraad)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Besteld)</dt>
+            <dd>@Html.DisplayFor(model => model.Besteld)</dd>
+        }
+        else
+        {
+            <dt>Voorraad</dt>
+            <dd>
+                @{
+                    var iVerschil = Model.OpVoorraad - Model.Besteld;
+                    if (iVerschil < 0) { iVerschil = 0; }
+                    ViewBag.Voorraad = iVerschil;
+                }
+                @ViewBag.Voorraad
+            </dd>
+        }
+
+        <dt>@Html.DisplayNameFor(model => model.Prijs)</dt>
+        <dd>@Html.DisplayFor(model => model.Prijs)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.ProductCategorie.Naam)</dt>
+        <dd>@Html.DisplayFor(model => model.ProductCategorie.Naam)</dd>
+    </dl>
+</div>
+<div>
+    @using (Html.BeginForm("BestelProduct", "Winkelwagen", new { ID = Model.ID }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <h4>Bestel Product</h4>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="control-label col-md-2">Aantal</div>
+                <div class="col-md-1">
+                    @Html.Editor("Aantal", new { htmlAttributes = new { min = 0, max = ViewBag.Voorraad, @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Naam, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-9">
+                    <input type="submit" value="Bestel" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<p>
+    @if (User.IsInRole("Admin") == true)
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID })<text> | </text>
+    }
+    @Html.ActionLink("Back to List", "Index")
+</p>

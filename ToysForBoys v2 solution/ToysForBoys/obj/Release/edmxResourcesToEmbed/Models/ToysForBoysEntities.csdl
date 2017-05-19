@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="webshopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BestelDetail">
+    <Key>
+      <PropertyRef Name="BestellingID" />
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="BestellingID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="Aantal" Type="Int32" Nullable="false" />
+    <Property Name="BestelPrijs" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Bestelling" Relationship="Self.FK_besteldetails_bestellingen" FromRole="besteldetails" ToRole="bestellingen" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_besteldetails_producten" FromRole="besteldetails" ToRole="producten" />
+  </EntityType>
+  <EntityType Name="Bestelling">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BestelDatum" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LeverDatum" Type="DateTime" Precision="3" />
+    <Property Name="VerzendDatum" Type="DateTime" Precision="3" />
+    <Property Name="Opmerkingen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="KlantID" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="BestelDetails" Relationship="Self.FK_besteldetails_bestellingen" FromRole="bestellingen" ToRole="besteldetails" />
+    <NavigationProperty Name="Klant" Relationship="Self.FK_bestellingen_klanten" FromRole="bestellingen" ToRole="klanten" />
+  </EntityType>
+  <EntityType Name="Klant">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Straat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Postcode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Gemeente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Provincie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LandID" Type="Int32" Nullable="false" />
+    <Property Name="Userlevel" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Bestellingen" Relationship="Self.FK_bestellingen_klanten" FromRole="klanten" ToRole="bestellingen" />
+    <NavigationProperty Name="Land" Relationship="Self.FK_klanten_landen" FromRole="klanten" ToRole="landen" />
+  </EntityType>
+  <EntityType Name="Land">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Klanten" Relationship="Self.FK_klanten_landen" FromRole="landen" ToRole="klanten" />
+  </EntityType>
+  <EntityType Name="ProductCategorie">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Omschrijving" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Producten" Relationship="Self.FK_producten_productcategories" FromRole="productcategories" ToRole="producten" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Schaal" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Omschrijving" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OpVoorraad" Type="Int32" Nullable="false" />
+    <Property Name="Besteld" Type="Int32" Nullable="false" />
+    <Property Name="Prijs" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="CategorieID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BestelDetails" Relationship="Self.FK_besteldetails_producten" FromRole="producten" ToRole="besteldetails" />
+    <NavigationProperty Name="ProductCategorie" Relationship="Self.FK_producten_productcategories" FromRole="producten" ToRole="productcategories" />
+  </EntityType>
+  <Association Name="FK_besteldetails_bestellingen">
+    <End Role="bestellingen" Type="webshopModel.Bestelling" Multiplicity="1" />
+    <End Role="besteldetails" Type="webshopModel.BestelDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bestellingen">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="besteldetails">
+        <PropertyRef Name="BestellingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_besteldetails_producten">
+    <End Role="producten" Type="webshopModel.Product" Multiplicity="1" />
+    <End Role="besteldetails" Type="webshopModel.BestelDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="producten">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="besteldetails">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_bestellingen_klanten">
+    <End Role="klanten" Type="webshopModel.Klant" Multiplicity="1" />
+    <End Role="bestellingen" Type="webshopModel.Bestelling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="klanten">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="bestellingen">
+        <PropertyRef Name="KlantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_klanten_landen">
+    <End Role="landen" Type="webshopModel.Land" Multiplicity="1" />
+    <End Role="klanten" Type="webshopModel.Klant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="landen">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="klanten">
+        <PropertyRef Name="LandID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_producten_productcategories">
+    <End Role="productcategories" Type="webshopModel.ProductCategorie" Multiplicity="1" />
+    <End Role="producten" Type="webshopModel.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="productcategories">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="producten">
+        <PropertyRef Name="CategorieID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="webshopEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BestelDetails" EntityType="webshopModel.BestelDetail" />
+    <EntitySet Name="Bestellingen" EntityType="webshopModel.Bestelling" />
+    <EntitySet Name="Klanten" EntityType="webshopModel.Klant" />
+    <EntitySet Name="Landen" EntityType="webshopModel.Land" />
+    <EntitySet Name="ProductCategories" EntityType="webshopModel.ProductCategorie" />
+    <EntitySet Name="Producten" EntityType="webshopModel.Product" />
+    <AssociationSet Name="FK_besteldetails_bestellingen" Association="Self.FK_besteldetails_bestellingen">
+      <End Role="bestellingen" EntitySet="Bestellingen" />
+      <End Role="besteldetails" EntitySet="BestelDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_besteldetails_producten" Association="Self.FK_besteldetails_producten">
+      <End Role="producten" EntitySet="Producten" />
+      <End Role="besteldetails" EntitySet="BestelDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_bestellingen_klanten" Association="Self.FK_bestellingen_klanten">
+      <End Role="klanten" EntitySet="Klanten" />
+      <End Role="bestellingen" EntitySet="Bestellingen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_klanten_landen" Association="Self.FK_klanten_landen">
+      <End Role="landen" EntitySet="Landen" />
+      <End Role="klanten" EntitySet="Klanten" />
+    </AssociationSet>
+    <AssociationSet Name="FK_producten_productcategories" Association="Self.FK_producten_productcategories">
+      <End Role="productcategories" EntitySet="ProductCategories" />
+      <End Role="producten" EntitySet="Producten" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

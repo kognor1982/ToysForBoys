@@ -1,0 +1,6 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/ToysForBoys solution/ToysForBoys/App_Data/aspnet-ToysForBoys-20170517110451.mdf
+/ToysForBoys solution/ToysForBoys/App_Data/aspnet-ToysForBoys-20170517110451_log.ldf
