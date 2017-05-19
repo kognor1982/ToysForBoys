@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ToysForBoys.Models.ProductCategorie>
+
+@{
+    ViewBag.Title = "Productcategorieën";
+}
+
+<h2>Productcategorieën</h2>
+
+@if (User.IsInRole("Admin") == true)
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Naam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Omschrijving)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naam)
+        </td>
+        <td class="col-md-9">
+            @Html.DisplayFor(modelItem => item.Omschrijving)
+        </td>
+        <td>
+            @if (User.IsInRole("Admin") == true)
+            {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+
+            }
+            
+        </td>
+    </tr>
+}
+
+</table>

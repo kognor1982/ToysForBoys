@@ -23,6 +23,11 @@ textarea {
     max-width: 280px;
 }
 
+.productcategorie textarea {
+    min-width: 600px;
+    min-height: 200px;
+}
+
 input[type="number"] {
     width: 72px;
     text-align: right;
