@@ -328,3 +328,4 @@ C:\Users\stevenvh\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\o
 C:\Users\stevenvh\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\obj\Debug\ToysForBoys.csproj.GenerateResource.Cache
 C:\Users\stevenvh\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\obj\Debug\ToysForBoys.dll
 C:\Users\stevenvh\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\obj\Debug\ToysForBoys.pdb
+C:\Users\stevenvh\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\obj\Debug\ToysForBoys.csprojResolveAssemblyReference.cache

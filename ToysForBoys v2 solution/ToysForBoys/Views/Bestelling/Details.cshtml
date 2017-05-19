@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ToysForBoys.Models.BestelDetail>
+
+@{
+    ViewBag.Title = "Bestellingen Details";
+}
+
+<h2>Bestelling Details - BestelNr @ViewBag.BestelID</h2>
+<br />
+<table class="table">
+    <tr>
+       
+        <th class="col-md-3">
+            @Html.DisplayNameFor(model => model.Product.Naam)
+        </th>
+        <th class="right col-md-7">
+            @Html.DisplayNameFor(model => model.Aantal)
+        </th>
+        <th class="right col-md-1">
+            @Html.DisplayNameFor(model => model.BestelPrijs)
+        </th>
+        <th class="right col-md-1">
+            Totaal
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Naam)
+            </td>
+            <td class="right">
+                @Html.DisplayFor(modelItem => item.Aantal)
+            </td>
+            <td class="right">
+                @Html.DisplayFor(modelItem => item.BestelPrijs)
+            </td>
+            <td class="right">
+                @Html.DisplayFor(modelItem => item.Totaal)
+            </td>
+            @*<td class="right">
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID })
+            </td>*@
+        </tr>
+    }
+
+</table>

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace ToysForBoys.Models
 {
+    [MetadataType(typeof(BestellingProperties))]
     public partial class Bestelling
     {
         public decimal Totaal { get { return BerekenTotaal(); } }
