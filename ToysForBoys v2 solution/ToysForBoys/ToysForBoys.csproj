@@ -200,6 +200,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductcategorieController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\WinkelwagenController.cs" />
     <Compile Include="Global.asax.cs">
@@ -340,6 +341,11 @@
     <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Winkelwagen\Index.cshtml" />
+    <Content Include="Views\Productcategorie\Create.cshtml" />
+    <Content Include="Views\Productcategorie\Delete.cshtml" />
+    <Content Include="Views\Productcategorie\Details.cshtml" />
+    <Content Include="Views\Productcategorie\Edit.cshtml" />
+    <Content Include="Views\Productcategorie\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
