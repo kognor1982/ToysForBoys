@@ -24,7 +24,7 @@ textarea {
 }
 
 input[type="number"] {
-    width: 72px;
+    width: 100px;
     text-align: right;
 }
 

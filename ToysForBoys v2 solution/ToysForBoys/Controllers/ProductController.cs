@@ -41,7 +41,7 @@ namespace ToysForBoys.Controllers
         // GET: Product/Create
         public ActionResult Create()
         {
-            if (User.IsInRole("Admin") == false) return RedirectToAction("Index");
+            if (User.IsInRole("Admin") == false) return RedirectToAction("Login", "Account", new { returnUrl = this.Request.RawUrl });
             ViewBag.CategorieID = new SelectList(db.ProductCategories, "ID", "Naam");
             return View();
         }
@@ -67,7 +67,7 @@ namespace ToysForBoys.Controllers
         // GET: Product/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (User.IsInRole("Admin") == false) return RedirectToAction("Index");
+            if (User.IsInRole("Admin") == false) return RedirectToAction("Login", "Account", new { returnUrl = this.Request.RawUrl });
             if (id == null)
             {
                 //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -103,7 +103,7 @@ namespace ToysForBoys.Controllers
         // GET: Product/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (User.IsInRole("Admin") == false) return RedirectToAction("Index");
+            if (User.IsInRole("Admin") == false) return RedirectToAction("Login", "Account", new { returnUrl = this.Request.RawUrl });
             if (id == null)
             {
                 //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
