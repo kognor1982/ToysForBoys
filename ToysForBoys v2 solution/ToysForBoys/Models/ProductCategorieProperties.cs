@@ -10,5 +10,10 @@ namespace ToysForBoys.Models
     {
         [Display(Name = "Categorie")]
         public string Naam { get; set; }
+
+        [DataType(DataType.MultilineText)]
+        public string Omschrijving { get; set; }
+
+
     }
 }
