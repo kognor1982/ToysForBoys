@@ -1,0 +1,92 @@
+﻿@model ToysForBoys.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Naam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Naam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Schaal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Schaal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Omschrijving)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Omschrijving)
+        </dd>
+        @if (User.IsInRole("Admin") == true)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.OpVoorraad)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OpVoorraad)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Besteld)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Besteld)
+            </dd>
+        }
+        else
+        {
+            <dt>Voorraad</dt>
+
+            <dd>
+                @{
+                    var iVerschil = Model.OpVoorraad - Model.Besteld;
+                    if (iVerschil < 0) { iVerschil = 0; }
+                    //Html.DisplayFor(iVerschil);
+                }
+                @iVerschil
+            </dd>
+        }
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prijs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prijs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductCategorie.Naam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductCategorie.Naam)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (User.IsInRole("Admin") == true)
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID })<text> | </text>
+    }
+    @Html.ActionLink("Back to List", "Index")
+</p>
