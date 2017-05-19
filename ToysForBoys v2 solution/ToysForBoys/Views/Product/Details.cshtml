@@ -3,6 +3,9 @@
 @{
     ViewBag.Title = "Details";
     ViewBag.Voorraad = 0;
+    var iVerschil = Model.OpVoorraad - Model.Besteld;
+    if (iVerschil < 0) { iVerschil = 0; }
+    ViewBag.Voorraad = iVerschil;
 }
 
 <h2>Product Details</h2>
@@ -30,14 +33,7 @@
         else
         {
             <dt>Voorraad</dt>
-            <dd>
-                @{
-                    var iVerschil = Model.OpVoorraad - Model.Besteld;
-                    if (iVerschil < 0) { iVerschil = 0; }
-                    ViewBag.Voorraad = iVerschil;
-                }
-                @ViewBag.Voorraad
-            </dd>
+            <dd>@ViewBag.Voorraad</dd>
         }
 
         <dt>@Html.DisplayNameFor(model => model.Prijs)</dt>
@@ -56,7 +52,7 @@
             <div class="form-group">
                 <div class="control-label col-md-2">Aantal</div>
                 <div class="col-md-1">
-                    @Html.Editor("Aantal", new { htmlAttributes = new { min = 0, max = ViewBag.Voorraad, @class = "form-control" } })
+                    @Html.Editor("Aantal", new { htmlAttributes = new { min = 1, max = ViewBag.Voorraad, @Value = "1", type = "number", @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Naam, "", new { @class = "text-danger" })
                 </div>
                 <div class="col-md-9">
