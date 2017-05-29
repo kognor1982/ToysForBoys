@@ -24,6 +24,10 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Productcategorieën", "Index", "Productcategorie")</li>
                     <li>@Html.ActionLink("Producten", "Index", "Product")</li>
+                    @if (User.IsInRole("Admin") == true)
+                    {
+                        <li>@Html.ActionLink("Bestellingen", "Index", "Bestelling")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

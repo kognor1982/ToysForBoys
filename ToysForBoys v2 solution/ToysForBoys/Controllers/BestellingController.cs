@@ -17,6 +17,7 @@ namespace ToysForBoys.Controllers
         // GET: Bestelling
         public ActionResult Index()
         {
+            if (User.IsInRole("Admin") == false) return RedirectToAction("Login", "Account", new { returnUrl = this.Request.RawUrl });
             var bestellingen = db.Bestellingen.Include(b => b.Klant);
             bestellingen = bestellingen.OrderBy(b => b.ID);
             return View(bestellingen.ToList());
@@ -25,9 +26,11 @@ namespace ToysForBoys.Controllers
         // GET: Bestelling/Details/5
         public ActionResult Details(int? id)
         {
+            if (User.IsInRole("Admin") == false) return RedirectToAction("Login", "Account", new { returnUrl = this.Request.RawUrl });
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             Bestelling bestelling = db.Bestellingen.Find(id);
             if (bestelling == null)
@@ -41,8 +44,11 @@ namespace ToysForBoys.Controllers
         // GET: Bestelling/Create
         public ActionResult Create()
         {
-            ViewBag.KlantID = new SelectList(db.Klanten, "ID", "Naam");
-            return View();
+            //if (User.IsInRole("Admin") == false) return RedirectToAction("Login", "Account", new { returnUrl = this.Request.RawUrl });
+            //ViewBag.KlantID = new SelectList(db.Klanten, "ID", "Naam");
+            //return View();
+            return RedirectToAction("Index");
+
         }
 
         // POST: Bestelling/Create
@@ -66,9 +72,12 @@ namespace ToysForBoys.Controllers
         // GET: Bestelling/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (User.IsInRole("Admin") == false) return RedirectToAction("Login", "Account", new { returnUrl = this.Request.RawUrl });
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
+
             }
             Bestelling bestelling = db.Bestellingen.Find(id);
             if (bestelling == null)
@@ -99,16 +108,21 @@ namespace ToysForBoys.Controllers
         // GET: Bestelling/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (User.IsInRole("Admin") == false) return RedirectToAction("Login", "Account", new { returnUrl = this.Request.RawUrl });
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
+
             }
             Bestelling bestelling = db.Bestellingen.Find(id);
             if (bestelling == null)
             {
                 return HttpNotFound();
             }
-            return View(bestelling);
+            //return View(bestelling);
+            return RedirectToAction("Index");
+
         }
 
         // POST: Bestelling/Delete/5

@@ -198,6 +198,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BestelDetailController.cs" />
+    <Compile Include="Controllers\BestellingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductcategorieController.cs" />
@@ -219,7 +221,8 @@
     <Compile Include="Models\Bestelling.cs">
       <DependentUpon>ToysForBoysEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BestellingUitbreiding.cs" />
+    <Compile Include="Models\BestellingExtension.cs" />
+    <Compile Include="Models\BestellingProperties.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Klant.cs">
       <DependentUpon>ToysForBoysEntities.tt</DependentUpon>
@@ -350,6 +353,16 @@
     <Content Include="Views\Productcategorie\Index.cshtml" />
     <Content Include="Views\Winkelwagen\Bestel.cshtml" />
     <Content Include="Views\Winkelwagen\Betaal.cshtml" />
+    <Content Include="Views\BestelDetail\Create.cshtml" />
+    <Content Include="Views\BestelDetail\Delete.cshtml" />
+    <Content Include="Views\BestelDetail\Details.cshtml" />
+    <Content Include="Views\BestelDetail\Edit.cshtml" />
+    <Content Include="Views\BestelDetail\Index.cshtml" />
+    <Content Include="Views\Bestelling\Create.cshtml" />
+    <Content Include="Views\Bestelling\Delete.cshtml" />
+    <Content Include="Views\Bestelling\Details.cshtml" />
+    <Content Include="Views\Bestelling\Edit.cshtml" />
+    <Content Include="Views\Bestelling\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
