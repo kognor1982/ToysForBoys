@@ -25,7 +25,7 @@
             {
                 iTotaal += item.Totaal;
                 var iVoorraad = item.Product.OpVoorraad - item.Product.Besteld;
-                if (iVoorraad < 0) { iVoorraad = 0; }
+                if (iVoorraad <= 0) { iVoorraad = 250; }
                 var sItemID = "item" + item.Product.ID.ToString();
                 <tr>
                     <td>@Html.DisplayFor(modelItem => item.Product.Naam)</td>

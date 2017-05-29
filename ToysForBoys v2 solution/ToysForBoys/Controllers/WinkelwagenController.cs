@@ -98,7 +98,15 @@ namespace ToysForBoys.Controllers
             // maak List van bestelde producten in winkelwagentje
             Winkelwagen oWinkelwagen = (Winkelwagen)this.Session["winkelwagen"];
             if (oWinkelwagen.Bestelling.BestelDetails.Count > 0)
+            {
+                // put opmerkingen in viewbag for retrieval
+                if (oWinkelwagen.Bestelling.Opmerkingen != null)
+                    ViewBag.Opmerkingen = oWinkelwagen.Bestelling.Opmerkingen;
+                else
+                    ViewBag.Opmerkingen = "";
+                //
                 return View(oWinkelwagen.Bestelling.BestelDetails.ToList());
+            }
             else
                 return RedirectToAction("Index");
         }
@@ -120,7 +128,7 @@ namespace ToysForBoys.Controllers
                 string sOpmerkingen = oFormElements["opmerkingen"];
                 oWinkelwagen.Bestelling.Opmerkingen = sOpmerkingen;
                 // het verdere verloop van de Bestelling moet worden afgehandeld m.b.v. een ingelogde klant (User Role = "Registered Customer")
-                if (User.IsInRole("Registered Customer") == false) return RedirectToAction("Login", "Account", new { returnUrl = this.Request.RawUrl });
+                if (User.IsInRole("Registered Customer") == false && User.IsInRole("Admin") == false) return RedirectToAction("Login", "Account", new { returnUrl = this.Request.RawUrl });
                 // vul Bestelling datums in
                 oWinkelwagen.Bestelling.BestelDatum = DateTime.Now;
                 oWinkelwagen.Bestelling.VerzendDatum = null;
@@ -132,11 +140,16 @@ namespace ToysForBoys.Controllers
                 oWinkelwagen.Bestelling.KlantID = 1;
 
                 // creëer een nieuwe Bestelling in de database
+                db.Bestellingen.Add(oWinkelwagen.Bestelling);
+                db.SaveChanges();
                 // creëer de Bestelling Details in de database
                 // maak Winkelwagen leeg nu de Bestelling is geregistreerd in de database
+                ViewBag.AfgerondeBestelling = oWinkelwagen.Bestelling;
+                oWinkelwagen = null;
+                this.Session["winkelwagen"] = null;
 
                 //
-                return View(oWinkelwagen.Bestelling);
+                return View();
             }
             return View();
         }

@@ -42,7 +42,8 @@
                 <td colspan="4">Bijkomende instructies/opmerkingen :</td>
             </tr>
             <tr>
-                <td colspan="3" class="productcategorie">@Html.TextArea("opmerkingen", null, new { @class = "form-control" })</td>
+                @*<td colspan="3" class="productcategorie">@Html.TextArea("opmerkingen", null, new { @class = "form-control" })</td>*@
+                <td colspan="3" class="productcategorie"><textarea name="opmerkingen" id="opmerkingen" class="form-control">@ViewBag.Opmerkingen</textarea></td>
                 <td class="right"><input type="submit" value="Betaal" class="btn btn-default" /></td>
             </tr>
         </tfoot>

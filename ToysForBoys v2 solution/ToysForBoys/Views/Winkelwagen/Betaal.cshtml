@@ -1,8 +1,43 @@
 ﻿@model ToysForBoys.Models.Bestelling
 @{
     ViewBag.Title = "Betaal";
+    decimal iTotaal = 0;
 }
 
 <h2>Betaal</h2>
 
-@Model.Opmerkingen
+Besteldatum : @ViewBag.AfgerondeBestelling.BestelDatum
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th class="right">Prijs</th>
+            <th class="right">Aantal</th>
+            <th class="right">Totaal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.AfgerondeBestelling.BestelDetails)
+            {
+                iTotaal += item.Totaal;
+                var iVoorraad = item.Product.OpVoorraad - item.Product.Besteld;
+                if (iVoorraad <= 0) { iVoorraad = 250; }
+                var sItemID = "item" + item.Product.ID.ToString();
+            <tr>
+                <td>@item.Product.Naam</td>
+                <td class="right">@item.BestelPrijs</td>
+                <td class="right">@item.Aantal</td>
+                <td class="right">@item.Totaal</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3"></td>
+            <td class="right">@String.Format("{0:C}", iTotaal)</td>
+        </tr>
+    </tfoot>
+</table>
+Opmerkingen/Instructies :<hr/>
+@ViewBag.AfgerondeBestelling.Opmerkingen

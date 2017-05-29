@@ -49,7 +49,7 @@ namespace ToysForBoys.Models
                         }
                         //..zo nee - voeg een nieuw besteldetail toe aan de bestelling
                         if (!reedsBesteld)
-                            this.Bestelling.BestelDetails.Add(new BestelDetail { Product = product, Aantal = aantal });
+                            this.Bestelling.BestelDetails.Add(new BestelDetail { Product = product, Aantal = aantal, BestelPrijs = product.Prijs });
                     }
                     //verkeerde productId
                     else
