@@ -1,41 +1,56 @@
 ﻿@model IEnumerable<ToysForBoys.Models.BestelDetail>
 @{
     ViewBag.Title = "Winkelwagen";
+    decimal iTotaal = 0;
 }
 
 <h2>Winkelwagen - Overzicht</h2>
 
-<table class="table">
-    <tr>
-        <th>Product</th>
-        <th class="right">Prijs</th>
-        <th class="right">Aantal</th>
-        <th class="right">Totaal</th>
-        <th></th>
-    </tr>
-    @{ 
-        decimal iTotaal = 0;
-    }
-    @foreach (var item in Model)
-    {
-        iTotaal += item.Totaal;
-        var iVoorraad = item.Product.OpVoorraad - item.Product.Besteld;
-        if (iVoorraad < 0) { iVoorraad = 0; }
-        <tr>
-            <td>@Html.DisplayFor(modelItem => item.Product.Naam)</td>
-            <td class="right">@Html.DisplayFor(modelItem => item.Product.Prijs)</td>
-            <td class="right">@Html.EditorFor(modelItem => item.Aantal, new { htmlAttributes = new { min = 0, max = iVoorraad } })</td>
-            <td class="right">@Html.DisplayFor(modelItem => item.Totaal)</td>
-            <td class="center">@Html.ActionLink("Delete", "DeleteProduct", "Winkelwagen", new { id = item.Product.ID }, null)</td>
-        </tr>
-    }
-    <tfoot>
-        <tr>
-            <td colspan="3"></td>
-            <td class="right">@String.Format("{0:€ #,##0.00}", iTotaal)</td>
-            <td></td>
-        </tr>
-    </tfoot>
-</table>
+@using (Html.BeginForm("Update", "Winkelwagen"))
+{
+    @Html.AntiForgeryToken()
 
-@Html.ActionLink("Herbereken", "Herbereken")
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th class="right">Prijs</th>
+                <th class="right">Aantal</th>
+                <th class="right">Totaal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                iTotaal += item.Totaal;
+                var iVoorraad = item.Product.OpVoorraad - item.Product.Besteld;
+                if (iVoorraad < 0) { iVoorraad = 0; }
+                var sItemID = "item" + item.Product.ID.ToString();
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Product.Naam)</td>
+                    <td class="right">@Html.DisplayFor(modelItem => item.Product.Prijs)</td>
+                    <td class="right">@Html.Editor(sItemID, new { htmlAttributes = new { id = sItemID, max = iVoorraad, min = 0, @Value = item.Aantal, type = "number" } })</td>
+                    <td class="right">@Html.DisplayFor(modelItem => item.Totaal)</td>
+                    <td class="center">@Html.ActionLink("Verwijder", "DeleteProduct", "Winkelwagen", new { id = item.Product.ID }, null)</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>
+                    @{
+                        if (Model.Count() > 0)
+                        {
+                            @Html.ActionLink("Bevestig Bestelling & Betaal", "Bestel", "Winkelwagen");
+                        }
+                    }
+                </td>
+                <td></td>
+                <td class="right"><input type="submit" value="Update" class="btn btn-default" /></td>
+                <td class="right">@String.Format("{0:C}", iTotaal)</td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+}

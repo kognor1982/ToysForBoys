@@ -10,7 +10,13 @@ namespace ToysForBoys.Models
     {
         [Display(Name = "Productnaam")]
         public string Naam { get; set; }
-        [DisplayFormat(DataFormatString = "{0:€ #,##0.00}")]
+        [DataType(DataType.MultilineText)]
+        public string Omschrijving { get; set; }
+        [Display(Name = "In Stock")]
+        public int OpVoorraad { get; set; }
+        [DisplayFormat(DataFormatString = "{0:C}")]
         public decimal Prijs { get; set; }
+        [Display(Name = "Categorie")]
+        public int CategorieID { get; set; }
     }
 }

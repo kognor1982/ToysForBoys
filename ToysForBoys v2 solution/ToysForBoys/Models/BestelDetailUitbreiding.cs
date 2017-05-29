@@ -8,7 +8,7 @@ namespace ToysForBoys.Models
 {
     public partial class BestelDetail
     {
-        [DisplayFormat(DataFormatString = "{0:€ #,##0.00}")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
         public decimal Totaal { get { return Aantal * Product.Prijs; } }
     }
 }

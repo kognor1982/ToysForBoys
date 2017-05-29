@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ToysForBoys.Models.BestelDetail>
+@{
+    ViewBag.Title = "Winkelwagen";
+    decimal iTotaal = 0;
+}
+
+<h2>Mijn Winkelwagentje - Bevestig Bestelling</h2>
+
+@using (Html.BeginForm("Betaal", "Winkelwagen"))
+{
+    @Html.AntiForgeryToken()
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th class="right">Prijs</th>
+                <th class="right">Aantal</th>
+                <th class="right">Totaal</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                iTotaal += item.Totaal;
+                var iVoorraad = item.Product.OpVoorraad - item.Product.Besteld;
+                if (iVoorraad < 0) { iVoorraad = 0; }
+                var sItemID = "item" + item.Product.ID.ToString();
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Product.Naam)</td>
+                    <td class="right">@Html.DisplayFor(modelItem => item.Product.Prijs)</td>
+                    <td class="right">@Html.DisplayFor(modelItem => item.Aantal)</td>
+                    <td class="right">@Html.DisplayFor(modelItem => item.Totaal)</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3"></td>
+                <td class="right">@String.Format("{0:C}", iTotaal)</td>
+            </tr>
+            <tr>
+                <td colspan="4">Bijkomende instructies/opmerkingen :</td>
+            </tr>
+            <tr>
+                <td colspan="3" class="productcategorie">@Html.TextArea("opmerkingen", null, new { @class = "form-control" })</td>
+                <td class="right"><input type="submit" value="Betaal" class="btn btn-default" /></td>
+            </tr>
+        </tfoot>
+    </table>
+}

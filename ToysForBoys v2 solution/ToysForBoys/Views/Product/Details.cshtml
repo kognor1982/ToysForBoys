@@ -51,11 +51,11 @@
         <div class="form-horizontal">
             <div class="form-group">
                 <div class="control-label col-md-2">Aantal</div>
-                <div class="col-md-1">
-                    @Html.Editor("Aantal", new { htmlAttributes = new { min = 1, max = ViewBag.Voorraad, @Value = "1", type = "number", @class = "form-control" } })
+                <div class="col-md-2">
+                    @Html.Editor("Aantal", new { htmlAttributes = new { min = 1, max = 250, @Value = "1", type = "number", @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Naam, "", new { @class = "text-danger" })
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-8">
                     <input type="submit" value="Bestel" class="btn btn-default" />
                 </div>
             </div>

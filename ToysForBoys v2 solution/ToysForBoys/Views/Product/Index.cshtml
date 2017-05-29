@@ -17,59 +17,59 @@
         <th>@Html.DisplayNameFor(model => model.Naam)</th>
         <th class="center">@Html.DisplayNameFor(model => model.Schaal)</th>
         @*<th>
-            @Html.DisplayNameFor(model => model.Omschrijving)
-        </th>*@
-@if (User.IsInRole("Admin") == true)
-{
-        <th class="right">@Html.DisplayNameFor(model => model.OpVoorraad)</th>
-        <th class="right">@Html.DisplayNameFor(model => model.Besteld)</th>
-}
-else
-{
-        <th class="right">Voorraad</th>
-}
+                @Html.DisplayNameFor(model => model.Omschrijving)
+            </th>*@
+        @if (User.IsInRole("Admin") == true)
+        {
+            <th class="right">@Html.DisplayNameFor(model => model.OpVoorraad)</th>
+            <th class="right">@Html.DisplayNameFor(model => model.Besteld)</th>
+        }
+        else
+        {
+            <th class="right">Voorraad</th>
+        }
         <th class="right">@Html.DisplayNameFor(model => model.Prijs)</th>
         <th>@Html.DisplayNameFor(model => model.ProductCategorie.Naam)</th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>@Html.DisplayFor(modelItem => item.Naam)</td>
-        <td class="center">@Html.DisplayFor(modelItem => item.Schaal)</td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Omschrijving)
-        </td>*@
-@if (User.IsInRole("Admin") == true)
-{
-        <td class="right">@Html.DisplayFor(modelItem => item.OpVoorraad)</td>
-        <td class="right">@Html.DisplayFor(modelItem => item.Besteld)</td>
-}
-else
-{
-        <td class="right">
-            @{
-                var iVerschil = item.OpVoorraad - item.Besteld;
-                if (iVerschil < 0) { iVerschil = 0; }
-                    //Html.DisplayFor(iVerschil);
-            }
-            @iVerschil
-        </td>
-            }
-        <td class="right">@Html.DisplayFor(modelItem => item.Prijs)</td>
-        <td>@Html.DisplayFor(modelItem => item.ProductCategorie.Naam)</td>
-        <td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Naam)</td>
+            <td class="center">@Html.DisplayFor(modelItem => item.Schaal)</td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Omschrijving)
+                </td>*@
             @if (User.IsInRole("Admin") == true)
             {
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID })<text> | </text>
+                <td class="right">@Html.DisplayFor(modelItem => item.OpVoorraad)</td>
+                <td class="right">@Html.DisplayFor(modelItem => item.Besteld)</td>
             }
-            @Html.ActionLink("Details", "Details", new { id=item.ID })
-            @*@if (User.IsInRole("Admin") == true)
+            else
             {
-                <text> | </text>@Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            }*@
-        </td>
-    </tr>
-}
+                <td class="right">
+                    @{
+                        var iVerschil = item.OpVoorraad - item.Besteld;
+                        if (iVerschil < 0) { iVerschil = 0; }
+                    }
+                    @iVerschil
+                </td>
+                        }
+            <td class="right">@Html.DisplayFor(modelItem => item.Prijs)</td>
+            <td>@Html.DisplayFor(modelItem => item.ProductCategorie.Naam)</td>
+            <td>
+                @if (User.IsInRole("Admin") == true)
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID })<text> | </text>
+                }
+                @Html.ActionLink("Details", "Details", new { id = item.ID })
+                @*@if (User.IsInRole("Admin") == true)
+                    {
+                        <text> | </text>@Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    }*@
+            </td>
+        </tr>
+                        }
 
 </table>
