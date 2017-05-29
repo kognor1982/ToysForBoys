@@ -1,0 +1,50 @@
+﻿@model ToysForBoys.Models.BestelDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BestelDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Aantal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aantal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BestelPrijs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BestelPrijs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bestelling.Opmerkingen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bestelling.Opmerkingen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Naam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.Naam)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

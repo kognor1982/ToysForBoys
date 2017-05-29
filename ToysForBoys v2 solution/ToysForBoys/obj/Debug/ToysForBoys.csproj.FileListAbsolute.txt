@@ -162,8 +162,6 @@ C:\Users\Yves Cools\Source\Repos\ToysForBoys\ToysForBoys solution\ToysForBoys\ob
 C:\Users\Yves Cools\Source\Repos\ToysForBoys\ToysForBoys solution\ToysForBoys\obj\Debug\ToysForBoys.pdb
 C:\Users\Yves Cools\Source\Repos\ToysForBoys\ToysForBoys solution\ToysForBoys\obj\Debug\ToysForBoys.Migrations.updatedatabase.resources
 C:\Users\Yves Cools\Source\Repos\ToysForBoys\ToysForBoys solution\ToysForBoys\obj\Debug\ToysForBoys.csproj.GenerateResource.Cache
-C:\Users\Yves Cools\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\obj\Debug\ToysForBoys.Migrations.updatedatabase.resources
-C:\Users\Yves Cools\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\obj\Debug\ToysForBoys.csproj.GenerateResource.Cache
 C:\Users\Yves Cools\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\bin\ApplicationInsights.config
 C:\Users\Yves Cools\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\bin\roslyn\csc.exe
 C:\Users\Yves Cools\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -243,6 +241,8 @@ C:\Users\Yves Cools\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys
 C:\Users\Yves Cools\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Yves Cools\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Yves Cools\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Yves Cools\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\obj\Debug\ToysForBoys.Migrations.updatedatabase.resources
+C:\Users\Yves Cools\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\obj\Debug\ToysForBoys.csproj.GenerateResource.Cache
 C:\Users\Yves Cools\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\obj\Debug\ToysForBoys.dll
 C:\Users\Yves Cools\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\obj\Debug\ToysForBoys.pdb
 C:\Users\stevenvh\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\bin\ApplicationInsights.config
@@ -324,8 +324,8 @@ C:\Users\stevenvh\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\b
 C:\Users\stevenvh\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\stevenvh\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\stevenvh\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\stevenvh\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\obj\Debug\ToysForBoys.csprojResolveAssemblyReference.cache
 C:\Users\stevenvh\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\obj\Debug\ToysForBoys.Migrations.updatedatabase.resources
 C:\Users\stevenvh\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\obj\Debug\ToysForBoys.csproj.GenerateResource.Cache
 C:\Users\stevenvh\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\obj\Debug\ToysForBoys.dll
 C:\Users\stevenvh\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\obj\Debug\ToysForBoys.pdb
+C:\Users\stevenvh\Source\Repos\ToysForBoys\ToysForBoys v2 solution\ToysForBoys\obj\Debug\ToysForBoys.csprojResolveAssemblyReference.cache
